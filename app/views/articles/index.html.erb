@@ -1,14 +1,15 @@
 <h1> All records </h1>
 
 <% @article.each do |t| %>
-  <p>
-    id : <%= t.id %>
-  </p>
-  <p>
-    Title : <%= t.title %>
-  </p>
+  <table>
+    <tr>
+    <th> Title </th>
+    <th> Description </th>
+    </tr>
+    <tr>
+    <td><%=  t.title %> </td>
+    <td><%= t.description %>  </td>
+    </tr>
+  </table>
 
-  <p>
-    Description : <%= t.description %>
-  </p>
 <% end %>
