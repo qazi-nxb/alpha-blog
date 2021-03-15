@@ -7,3 +7,8 @@
 <p>
   Description : <%= @article.description %>
 </p>
+
+<%= link_to 'edit', edit_article_path(@article) %>
+<%= link_to 'delete', article_path(@article), method: :delete, data:{confirm:"are you sure?"} %>
+
+<%= link_to 'go back', articles_path %>
