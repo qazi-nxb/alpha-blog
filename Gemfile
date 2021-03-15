@@ -10,6 +10,7 @@ gem 'rails', '~> 6.1.3'
 
 gem 'pry', '~> 0.13.1'
 gem 'pry-byebug', '~> 3.4'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'bootstrap', '~> 5.0.0.beta2'
 gem 'jquery-rails'
 
