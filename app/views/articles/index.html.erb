@@ -1,14 +1,18 @@
 <h1> All records </h1>
-
+<tr>
+  <td> <%=  link_to 'Create New', new_article_path %></td> <br>
+  <th> Title </th>
+  <th> Description </th>
+</tr>
 <% @article.each do |t| %>
-  <table>
+  <table style="">
+
     <tr>
-    <th> Title </th>
-    <th> Description </th>
-    </tr>
-    <tr>
-    <td><%=  t.title %> </td>
-    <td><%= t.description %>  </td>
+      <td> <%=  t.title %> </td>
+      <td> <%= t.description %>  </td>
+      <td> <%= link_to 'show', article_path(t) %> </td>
+      <td> <%= link_to 'edit', edit_article_path(t) %> </td>
+      <td> <%= link_to 'delete', article_path(t), method: :delete, data:{confirm:"are you sure?"} %></td>
     </tr>
   </table>
 
