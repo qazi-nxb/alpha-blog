@@ -1,1 +1,18 @@
 @import 'bootstrap/dist/css/bootstrap';
+.jcenter
+{
+ text-align: center;
+  background-image: asset_url("img.jpg");
+  background-size: cover;
+}
+.jcenter .bg
+{
+  opacity: 0.5;
+}
+
+#logo
+{
+  font-size: 2.5em;
+  font-weight: bold;
+
+}
