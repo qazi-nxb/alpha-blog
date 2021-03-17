@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'pages/mypage', to: "pages#mypage"
   resources :articles
   resources :pages
+  get 'signup', to: "users#new"
+  resources :users, except: [:new]
 end
