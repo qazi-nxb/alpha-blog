@@ -9,6 +9,13 @@
        <div class="article-body">
          <%= truncate(t.description, length:100) %>
        </div>
+       <div class="artilce-data">
+       <small>
+         Created by: <%= t.user.username %>,
+         <%= time_ago_in_words(t.created_at) %> ago,
+         last updated at: <%= time_ago_in_words(t.updated_at) %> ago
+       </small>
+       </div>
        <div class="articleact">
          <%= link_to 'edit', edit_article_path(t), class: "btn btn-success" %>
          <%= link_to 'delete', article_path(t), class: "btn btn-danger", method: :delete, data:{confirm:"are you sure?"} %>
