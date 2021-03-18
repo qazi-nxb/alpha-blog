@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_finder, only: [:edit, :show, :update]
   def new
     @user = User.new
   end
@@ -13,11 +14,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success]= "User Updated Succcessfully"
       redirect_to articles_path
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
     end
   end
   def show
-    @user = User.find(params[:id])
     @user_articles= @user.articles.paginate(page: params[:page], per_page: 1)
   end
 
@@ -37,5 +35,8 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:username, :useremail, :password)
+  end
+  def user_finder
+    @user = User.find(params[:id])
   end
 end
