@@ -1,5 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :article_finder, only: [:edit, :show, :update, :destroy]
+  before_action :require_user
+  before_action :require_same_user, only: [:update, :edit, :destroy]
+
   def show
   end
   
@@ -13,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.user = current_user
     if @article.save
       flash[:success] = "Added Successfully"
       redirect_to article_path(@article)
@@ -47,5 +51,12 @@ class ArticlesController < ApplicationController
     end
     def article_params
       params.require(:article).permit(:title, :description)
+    end
+
+    def require_same_user
+      if current_user!= @article.user and !current_user.admin?
+        flash[:danger] = "You don't have rights to do this"
+        redirect_to root_path
+      end
     end
 end

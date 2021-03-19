@@ -13,9 +13,11 @@
   <h4 class="center my-0 " ><strong> Description </strong></h4>
   <hr>
   <%= simple_format(@article.description) %>
+  <% if logged_in? && (current_user == @article.user || current_user.admin?) %>
   <div class="articleact">
-  <%= link_to 'edit', edit_article_path(@article), class: "btn btn-success" %>
-  <%= link_to 'delete', article_path(@article), class: "btn btn-danger", method: :delete, data:{confirm:"are you sure?"} %>
+    <%= link_to 'edit', edit_article_path(@article), class: "btn btn-success" %>
+    <%= link_to 'delete', article_path(@article), class: "btn btn-danger", method: :delete, data:{confirm:"are you sure?"} %>
+  <% end %>
   <%= link_to 'go back', articles_path, class: "btn btn-primary" %>
   </div>
 </div>
