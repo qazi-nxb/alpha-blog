@@ -10,7 +10,7 @@
         </div>
         <div class="artilce-data">
           <small>
-            Created by: <%= t.user.username %>,
+            Created by: <%= t.user.username unless t.user.blank? %>,
             <%= time_ago_in_words(t.created_at) %> ago,
             last updated at: <%= time_ago_in_words(t.updated_at) %> ago
           </small>
